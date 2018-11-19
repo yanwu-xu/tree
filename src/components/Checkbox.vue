@@ -3,6 +3,15 @@
     <span :class="outerClasses">
         <span :class="checkboxClasses">
             <input
+                v-if="group"
+                type="checkbox"
+                :value="label"
+                v-model="model"
+                :class="inputClasses"
+                :disabled="disabled"
+                @change="inputChange">
+            <input
+                v-else
                 type="checkbox"
                 :class="inputClasses"
                 :checked="checkedValue"
@@ -44,6 +53,9 @@ export default {
         return {
             checkedValue: this.value,
             showSlot: true,
+            group: false,
+            model: [],
+            parent: this.findComponentUpward(this, 'CheckboxGroup'),
         }
     },
     computed: {
@@ -72,12 +84,38 @@ export default {
             ]
         }
     },
+    mounted() {
+        this.parent = this.findComponentUpward(this, 'CheckboxGroup')
+        if (this.parent) {
+            this.group = true
+            this.parent.updateModel()
+        }
+    },
     methods: {
+        findComponentUpward(context, componentName, componentNames) {
+            if (typeof componentName === 'string') {
+                componentNames = [componentName]
+            } else {
+                componentNames = componentName
+            }
+
+            let parent = context.$parent
+            let name = parent.$options.name
+            while (parent && (!name || componentNames.indexOf(name) < 0)) {
+                parent = parent.$parent
+                if (parent) name = parent.$options.name
+            }
+            return parent
+        },
         inputChange(event) {
             let checked = event.target.checked
             let value = checked ? this.trueValue : this.falseValue
             this.checkedValue = checked
             this.$emit('input', value)
+
+            if (this.group) {
+                this.parent.change(this.model)
+            }
         }
     }
 }

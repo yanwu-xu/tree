@@ -17,7 +17,7 @@ export default {
     },
     data() {
         return {
-            aaa: 'aaa',
+            currentValue: this.value,
             children: []
         }
     },
@@ -34,11 +34,24 @@ export default {
         },
         updateModel() {
             this.children = this.findComponentsDownward(this, 'Checkbox')
+
             this.children.forEach(child => {
+                child.model = this.currentValue
+
                 if (this.value.indexOf(child.label) >= 0) {
                     child.checkedValue = true
                 }
             })
+        },
+        change(data) {
+            this.currentValue = data
+            this.$emit('input', data)
+            this.$emit('on-change', data)
+        }
+    },
+    watch: {
+        currentValue () {
+            this.updateModel()
         }
     }
 }

@@ -37,10 +37,7 @@ export default {
 
             this.children.forEach(child => {
                 child.model = this.currentValue
-
-                if (this.value.indexOf(child.label) >= 0) {
-                    child.checkedValue = true
-                }
+                child.checkedValue = this.value.indexOf(child.label) >= 0
             })
         },
         change(data) {

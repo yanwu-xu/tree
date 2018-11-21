@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import Checkbox from './Checkbox/Checkbox'
+import Checkbox from '../Checkbox/Checkbox'
 import Render from './render'
-import src from '../assets/dropright.svg'
+import src from '../../assets/dropright.svg'
 
 export default {
     name: 'TreeNode',
@@ -123,7 +123,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style>
 .tree-node{
     margin-left: 20px;
     transition: all .2s;
@@ -134,10 +134,11 @@ export default {
     display: inline-block;
     width: 10px;
     cursor: pointer;
-    img{
-        width: 10px;
-        transition: all .2s;
-    }
+    
+}
+.icon-right img{
+    width: 10px;
+    transition: all .2s;
 }
 .tree-li{
     font-size: 14px;

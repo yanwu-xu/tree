@@ -13,7 +13,7 @@
 
 <script>
 const prefixCls = 'x-tree'
-import CheckboxGroup from './CheckboxGroup/CheckboxGroup'
+import CheckboxGroup from '../Checkbox/CheckboxGroup'
 import TreeNode from './Node'
 
 export default {
@@ -135,13 +135,11 @@ export default {
 }
 </script>
 
-<style lang="less">
-.x-tree{
-    ul, li{
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
+<style>
+.x-tree ul, li{
+    padding: 2px 0;
+    margin: 0;
+    list-style: none;
 }
 </style>
 

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import aaa from './index'
+import Xtree from '../package/index'
 Vue.config.productionTip = false
 
-Vue.use(aaa)
+Vue.use(Xtree)
 
 new Vue({
   render: h => h(App),

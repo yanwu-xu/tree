@@ -121,10 +121,8 @@ export default {
 }
 </script>
 
-<style lang="less">
-@prefixCls: x-checkbox;
-
-.@{prefixCls}{
+<style>
+.x-checkbox{
     width: 12px;
     height: 12px;
     display: inline-block;
@@ -135,49 +133,49 @@ export default {
     margin-right: 4px;
     background: #fff;
     cursor: pointer;
-    &:hover{
-        border: 1px solid #aaa;
-    }
 }
 
-.@{prefixCls}-checked{
+.x-checkbox:hover{
+    border: 1px solid #aaa;
+}
+
+.x-checkbox-checked{
     cursor: pointer;
     border: 1px solid #008cff;
     background: #008cff;
-    &:hover{
-        border: 1px solid #008cff;
-    }
-    &::after{
-        content: '';
-        width: 2px;
-        height: 6px;
-        display: block;
-        position: absolute;
-        top: 1px;
-        left: 4px;
-        border: 2px solid #fff;
-        border-top: none;
-        border-left: none;
-        transform: rotate(45deg);
-    }
+}
+.x-checkbox-checked:hover{
+    border: 1px solid #008cff;
+}
+.x-checkbox-checked::after{
+    content: '';
+    width: 2px;
+    height: 6px;
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
 }
 
-// disabled的情况
-.@{prefixCls}-outer-disabled{
-    .@{prefixCls}-checked{
-        border: 1px solid #aeaeae;
-        background: #e7e7e7;
-        &::after{
-            border-color: #b9b9b9;
-        }
-    }
-    .@{prefixCls}{
-        background: #e7e7e7;
-        cursor: pointer;
-    }
+.x-checkbox-outer-disabled .x-checkbox-checked{
+    border: 1px solid #aeaeae;
+    background: #e7e7e7;
 }
 
-.@{prefixCls}-outer{
+.x-checkbox-outer-disabled .x-checkbox-checked::after{
+    border-color: #b9b9b9;
+}
+
+.x-checkbox-outer-disabled .x-checkbox{
+    background: #e7e7e7;
+    cursor: pointer;
+}
+
+.x-checkbox-outer{
     display: inline-block;
     vertical-align: middle;
     white-space: nowrap;
@@ -186,14 +184,14 @@ export default {
     position: relative;
 }
 
-.@{prefixCls}-label{
+.x-checkbox-label{
     cursor: pointer;
     font-size: 14px;
     display: inline-block;
     margin-right: 8px;
 }
 
-.@{prefixCls}-input{
+.x-checkbox-input{
     cursor: pointer;
     position: absolute;
     top: 0;

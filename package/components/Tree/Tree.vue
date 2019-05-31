@@ -1,7 +1,7 @@
 <template>
     <div :class="prefixCls">
         <CheckboxGroup v-model="model" @on-change="modelChange">
-            <Tree-Node 
+               <Tree-Node 
                 v-for="(item, i) in data"
                 :data="item"
                 :keys="keys"
